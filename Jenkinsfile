@@ -22,26 +22,18 @@ pipeline {
 }'''
             }
           }
-          stage('') {
+          stage('error') {
             steps {
-              sh '''pipeline {
-    agent any
-    stages {
-        stage(\'Test\') {
-            steps {
-                sh \'./gradlew check\'
-            }
-        }
-    }
-    post {
-        always {
-            junit \'build/reports/**/*.xml\'
-        }
-    }
-}'''
-              }
+              sh '''
+#!/bin/bash
+
+# example of using arguments to a script
+echo "My first name is $1"
+echo "My surname is $2"
+echo "Total number of arguments is $#" '''
             }
           }
         }
       }
     }
+  }
